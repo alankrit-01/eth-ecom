@@ -2,37 +2,83 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+  font-family: 'Roboto Mono', monospace;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.Center{
+  display:grid !important;
+  justify-content: center !important;
+}
+
+.parent{
+  margin-left: 10%;
+  width: 80%; 
+  overflow: hidden;
+  border: 1px solid;
+  padding: 5px 5px 5px 5px;
+  margin-bottom: 25px ;
+}
+
+.left-child{
+  /* border: 1px solid; */
+  width: 600px;
+  float: left;
+}
+.right-child{
+  /* border: 1px solid; */
+  margin-left: 500px;
+  margin-top: 80px;
+}
+img{
+  /* image-rendering: pixelated; */
+  width: 250px;
+  height: 350px;
+}
+
+
+.fadein img{
+  opacity:0.9;
+  transition: 1s ease;
   }
+  
+.fadein img:hover{
+  opacity:1;
+  transition: 1s ease;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.parent {
+  position: relative;
+  /* width: 350px; */
+  /* height: 550px; */
+  /* background: white; */
+  border-radius: 0% 0% 0% 0% / 0% 0% 0% 0% ;
+  /* color: white; */
+  box-shadow: 20px 20px rgba(0,0,0,.15);
+  transition: all .4s ease;
+}
+.parent:hover {
+  border-radius: 0% 0% 50% 50% / 0% 0% 5% 5% ;
+  box-shadow: 10px 10px rgba(0,0,0,.25);
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.title{
+  font-weight: bold;
+  /* float: left; */
+}
+/* .description{ */
+  /* float: left; */
+  /* background-color: aliceblue; */
+  /* justify-content: left; */
+/* } */
+
+a{
+  color: var(--bs-nav-link-color);
+  text-decoration: none;
+}
+a:hover{
+  color: gainsboro;  
+  text-decoration: none;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
 }

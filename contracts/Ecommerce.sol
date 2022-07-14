@@ -23,7 +23,7 @@ contract Ecommerce is Ownable{
         string image;
     }
 
-    mapping(uint =>Item) private Items;
+    Item[] private Items;
 
     event ItemUpladed(uint id);
     event ItemBought(uint id);
@@ -52,7 +52,7 @@ contract Ecommerce is Ownable{
             description:_description,
             image:_image
         });
-        Items[currentItem] =_item;
+        Items.push(_item);
         _itemIds.increment();
         emit ItemUpladed(currentItem);
     } 
@@ -87,6 +87,10 @@ contract Ecommerce is Ownable{
         uint counter =getItemCounter();
         require(counter>_itemId,"Invalid item id");
         return Items[_itemId];
+    }
+    
+    function getItems() public view returns(Item[] memory){
+        return Items;
     }
 
     function fundsCollected() public view returns(uint){
