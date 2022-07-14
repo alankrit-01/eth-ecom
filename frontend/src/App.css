@@ -82,3 +82,57 @@ a:hover{
   text-decoration: none;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
 }
+
+
+/* ADMIN CSS*/
+
+.parent-admin{
+  /* margin-left: 10%; */
+  
+  width: 1000px !important; 
+  overflow: hidden;
+  border: 1px solid;
+  padding: 15px 15px 15px 15px;
+  margin-bottom: 25px ;
+}
+
+.left-child-admin{
+  width: 200px;
+  height: 300px;
+  float: left;
+  /* border-right: 1px solid;   */
+  /* margin: 10px 10px 10px 10px; */
+  margin-top:6%;
+  margin-left:16%;
+  /* padding: 10px 10px 10px 10px; */
+}
+.right-child-admin{
+  float: right;
+  /* border: 1px solid; */
+  width: 200px;
+  margin-top:6%;
+  margin-right:16%;
+  margin-bottom:6%;
+
+  height: 300px;
+  /* margin: 10px 10px 10px 10px; */
+
+  /* margin-left: 500px; */
+  /* margin-top: 80px; */
+}
+
+.parent-admin {
+  position: relative;
+  /* width: 350px; */
+  /* height: 550px; */
+  /* background: white; */
+  border-radius: 0% 0% 0% 0% / 0% 0% 0% 0% ;
+  /* color: white; */
+  box-shadow: 20px 20px rgba(0,0,0,.15);
+  transition: all .4s ease;
+}
+.parent-admin:hover {
+  border-radius: 0% 0% 50% 50% / 0% 0% 5% 5% ;
+  box-shadow: 10px 10px rgba(0,0,0,.25);
+}
+

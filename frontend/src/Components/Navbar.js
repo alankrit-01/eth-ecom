@@ -10,7 +10,7 @@ function MyNavbar(props) {
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
         <Container fluid>
-            <Navbar.Brand href="#">Decentralized E-commerce</Navbar.Brand>
+            <Navbar.Brand ><Link to="/">Decentralized E-commerce</Link></Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
             <Nav

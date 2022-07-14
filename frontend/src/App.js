@@ -61,7 +61,8 @@ function App() {
 
 		let contract = new ethers.Contract(contractAddress, EcomAbiJson.abi, signer);
 		setcontract(contract);
-    const counter = (await contract.getItemCounter()).toNumber(); 
+    let counter 
+    counter= (await contract.getItemCounter()).toNumber(); 
     console.log(counter);
     let _items=[]
     for(let i=0; i<counter; i++){
@@ -83,6 +84,7 @@ function App() {
           items.map((item)=>(
             // console.log(item.name)
             <>
+            
             <ItemCard 
               id= {item.id}
               name= {item.name}
@@ -93,7 +95,8 @@ function App() {
               ItemCategory= {item.ItemCategory.toNumber()}
               contract={contract}
               />
-            <br></br>
+            <br></br> 
+
             </>
           ))}
           </div>

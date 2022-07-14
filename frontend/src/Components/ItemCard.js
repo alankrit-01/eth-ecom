@@ -1,5 +1,8 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import '../App.css';
 function ItemCard(props) {
   let category;
@@ -19,6 +22,15 @@ function ItemCard(props) {
       await (props.contract).buyItem(event.target.itemId.value,event.target.quantity.value,{value:((props.weiPerItem)*event.target.quantity.value)});
     } catch (error) {
       console.log(error.message)
+      toast.error(error.message, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
     }
     event.target.quantity.value =undefined;
   }
@@ -43,6 +55,17 @@ function ItemCard(props) {
         </div>
       </div>
       <br></br>
+      <ToastContainer
+    position="bottom-right"
+    autoClose={5000}
+    hideProgressBar={false}
+    newestOnTop={false}
+    closeOnClick
+    rtl={false}
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover
+    />
     </>
   );
 }
