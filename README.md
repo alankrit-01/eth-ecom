@@ -1,13 +1,19 @@
-# Sample Hardhat Project
+# Decentralised E-Commerce website made on Ethereum
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+## Functionalities
+- Customer can buy an item by paying the amount in ether(or wei)
+- Admin can upload a new item by pasing the details (category, seller address, quantity ..etc)
+- Admin can view how much to pay to the seller of a pariculater item ID.
+- Admin can pay to the seller of a pariculater item ID.
 
-Try running some of the following tasks:
-
-```shell
-npx hardhat help
-npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
+## Note
+- Arguments to `upload a new item` (by Admin) are -
+```
+      uint category -> 0 for Men, 1 for Women, 2 for Children 
+      uint quantity -> Number of items
+      address seller -> Ethereum address of the seller
+      uint weiPerItem -> price (wei) per item
+      string memory name -> Name of the item
+      string memory description -> Description about the item
+      string memory image -> URL of the item image
 ```
