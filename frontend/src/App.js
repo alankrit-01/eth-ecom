@@ -4,11 +4,16 @@ import  ItemCard from './Components/ItemCard.js';
 import React, { useEffect, useState } from 'react';
 import EcomAbiJson from './artifacts/contracts/Ecommerce.sol/Ecommerce.json';
 import { ethers } from "ethers";
-let contractAddress="0x9E78ff30Bdab7f4B780930167670aB9aAC2BC6eB";
+let contractAddress="0xe56e9016e9522eE541128C12d9f08339a8D075C1";
 
 // let object;
 function App() {
-  const [account, setaccount] = useState('0x0');
+  const [account, setaccount] = useState(()=>{
+    const account = localStorage.getItem("ECOM_ACCOUNT");
+    if(account ==undefined) return "0x0";
+    const initialValue = JSON.parse(account);
+    return initialValue || "0x0";
+  });
   const [provider, setprovider] = useState('');
   const [signer, setsigner] = useState('');
   const [contract, setcontract] = useState('');
@@ -22,15 +27,18 @@ function App() {
     }
     const accountWasChanged = (accounts) => {
         setaccount(accounts[0]);
+        localStorage.setItem("ECOM_ACCOUNT", JSON.stringify(accounts[0]));
         console.log('accountWasChanged');
     }
     const getAndSetAccount = async () => {
         const changedAccounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
         setaccount(changedAccounts[0]);
+        localStorage.setItem("ECOM_ACCOUNT", JSON.stringify(changedAccounts[0]));
         console.log('getAndSetAccount');
     }
     const clearAccount = () => {
         setaccount('0x0');
+        localStorage.setItem("ECOM_ACCOUNT", JSON.stringify('0x0'));
         console.log('clearAccount');
     };
     window.ethereum.on('accountsChanged', accountWasChanged);
@@ -81,10 +89,11 @@ function App() {
           ? <div id="loader" className="text-center mt-5"><p>Loading...</p></div>
           :
           <div className="Center">{
+          items.length > 0 ? 
           items.map((item)=>(
             // console.log(item.name)
+            item.ItemState ==0 ?
             <>
-            
             <ItemCard 
               id= {item.id}
               name= {item.name}
@@ -98,7 +107,9 @@ function App() {
             <br></br> 
 
             </>
-          ))}
+            : ""
+          ))  : <h2>No Items Found</h2>
+        }
           </div>
         }
         

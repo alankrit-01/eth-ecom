@@ -5,10 +5,15 @@ import { ToastContainer, toast } from 'react-toastify';
 import EcomAbiJson from '../artifacts/contracts/Ecommerce.sol/Ecommerce.json';
 import 'react-toastify/dist/ReactToastify.css';
 import { ethers } from "ethers";
-let contractAddress="0x9E78ff30Bdab7f4B780930167670aB9aAC2BC6eB";
+let contractAddress="0xe56e9016e9522eE541128C12d9f08339a8D075C1";
 
 export const Admin = () => {
-    const [account, setaccount] = useState('0x0');
+    const [account, setaccount] = useState(()=>{
+        const account = localStorage.getItem("ECOM_ACCOUNT");
+        if(account ==undefined) return "0x0";
+        const initialValue = JSON.parse(account);
+        return initialValue || "0x0";
+      });
     const [provider, setprovider] = useState('');
     const [signer, setsigner] = useState('');
     const [contract, setcontract] = useState('');
@@ -21,15 +26,18 @@ export const Admin = () => {
         }
         const accountWasChanged = (accounts) => {
             setaccount(accounts[0]);
+            localStorage.setItem("ECOM_ACCOUNT", JSON.stringify(accounts[0]));
             console.log('accountWasChanged');
         }
         const getAndSetAccount = async () => {
             const changedAccounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
             setaccount(changedAccounts[0]);
+            localStorage.setItem("ECOM_ACCOUNT", JSON.stringify(changedAccounts[0]));
             console.log('getAndSetAccount');
         }
         const clearAccount = () => {
             setaccount('0x0');
+            localStorage.setItem("ECOM_ACCOUNT", JSON.stringify('0x0'));
             console.log('clearAccount');
         };
         window.ethereum.on('accountsChanged', accountWasChanged);
