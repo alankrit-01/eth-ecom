@@ -56,6 +56,7 @@ contract Ecommerce is Ownable{
         _itemIds.increment();
         emit ItemUpladed(currentItem);
     } 
+
     function buyItem(uint _itemId, uint _amount) public payable{
         Item memory _item =getItem(_itemId);
         require(_item.ItemState!=1,"Item sold completely");
@@ -69,6 +70,7 @@ contract Ecommerce is Ownable{
         Items[_itemId] =_item;
         emit ItemBought(_itemId);      
     }  
+    
     function payToSeller(uint _itemId) public onlyOwner{
         Item memory _item =getItem(_itemId);
         require(_item.tobepaid!=0, "No pending amount");
